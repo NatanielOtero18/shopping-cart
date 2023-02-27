@@ -1,0 +1,16 @@
+.mainBody {
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.title {
+  color: whitesmoke;
+  font-family: "Oswald";
+  font-size: 1.5em;
+  padding: 3em;
+}/*# sourceMappingURL=mainView.module.css.map */

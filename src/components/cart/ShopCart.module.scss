@@ -1,0 +1,35 @@
+.btnCart{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.title{
+    font-family: 'Montserrat';   
+    color: whitesmoke;
+    margin-left: 2em;
+}
+
+.itemCard{
+    margin-top: 0.5em;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 0.5em;
+    background-color: rgba(17, 10, 10, 0.466);
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    padding: 1em;
+    width: 80%;   
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+}
+

@@ -1,0 +1,40 @@
+.btn {
+  font-family: "Montserrat";
+  letter-spacing: 5px;
+  color: whitesmoke;
+}
+
+.headerContainer {
+  font-family: "Montserrat";
+  letter-spacing: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: whitesmoke;
+  z-index: 5;
+  position: absolute;
+  width: 90vw;
+  background-color: rgba(0, 0, 0, 0.144);
+}
+.headerContainer .link {
+  text-decoration: none;
+}
+.headerContainer .link:hover {
+  color: whitesmoke;
+  text-decoration: underline;
+}
+.headerContainer .link:visited {
+  color: whitesmoke;
+  text-decoration: none;
+}
+.headerContainer h2 {
+  margin-left: 1em;
+  font-size: 2em;
+}
+.headerContainer span {
+  color: rgb(236, 46, 46);
+}
+.headerContainer .btnGroup {
+  gap: 0.5em;
+  margin-right: 1em;
+}/*# sourceMappingURL=Navbar.module.css.map */
