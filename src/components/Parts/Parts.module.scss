@@ -21,7 +21,12 @@
     
 
 }
-
+.countContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .container{
     margin-top: 1em;
     width: 80%;

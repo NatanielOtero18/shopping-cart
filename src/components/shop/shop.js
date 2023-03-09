@@ -76,7 +76,7 @@ const ShoppingPage = (props) => {
     };
 
     const handleStep = (step,label) => () => {
-        setActiveStep(step);
+        setActiveStep(step);        
         removeCoreComponent(label);
         handleLink(label);
     };

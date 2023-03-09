@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import Button from '@mui/material/Button';
 import styles from './Parts.module.css';
@@ -9,6 +10,7 @@ import { rams } from "./ram";
 import { psu } from "./psu";
 import { storage } from "./storage";
 import { cases } from "./case";
+import TextField from '@mui/material/TextField';
 
 export const CPU = (props) => {
     const { cartList, addComponent } = props;
@@ -17,19 +19,18 @@ export const CPU = (props) => {
     console.log(data);
 
     const handleAddItem = (item) => {
-        if(cartList.Motherboard.id !== ""){
-            if(cartList.Motherboard.socket !== item.socket){
+        if (cartList.Motherboard.id !== "") {
+            if (cartList.Motherboard.socket !== item.socket) {
                 alert("The cpu and the motherboard are incompatible ")
-            }else{
+            } else {
                 addComponent("CPU", item);
                 handleComplete("Motherboard");
             }
-        }else
-        {
+        } else {
             addComponent("CPU", item);
             handleComplete("Motherboard");
         }
-        
+
     }
 
     return (<div>
@@ -79,19 +80,18 @@ export const Mother = (props) => {
     const data = mobos.data;
 
     const handleAddItem = (item) => {
-        if(cartList.CPU.id !== ""){
-            if(cartList.CPU.socket !== item.socket){
+        if (cartList.CPU.id !== "") {
+            if (cartList.CPU.socket !== item.socket) {
                 alert("The cpu and the motherboard are incompatible ")
-            }else{
+            } else {
                 addComponent("Motherboard", item);
                 handleComplete("GPU");
             }
-        }else
-        {
+        } else {
             addComponent("Motherboard", item);
             handleComplete("GPU");
         }
-      
+
     }
 
 
@@ -131,6 +131,7 @@ export const GPU = (props) => {
     const data = gpus.data;
 
     const handleAddItem = (item) => {
+
         addComponent("GPU", item);
         handleComplete("RAM");
     }
@@ -163,14 +164,27 @@ export const RAM = (props) => {
     const { cartList, addComponent } = props;
     const [brand, chooseBrand, handleComplete] = useOutletContext()
     const data = rams.data;
+    const [count, setCount] = useState(1);
 
     const handleAddItem = (item) => {
+        item["count"] = "Count: " + count;
+        addComponent("RAM", item);
+
+        /*handleComplete("PSU");*/
+    }
+
+    const changeHandler = (e) => {
+        setCount(e.target.value);
+    }
+    const confirmCount = (item) => {
+        item["count"] = "Count: " + count;
         addComponent("RAM", item);
         handleComplete("PSU");
     }
     return (<div>
         <div className={styles.container}>
             {
+
                 data.map(item => {
                     return <div className={styles.itemCard} key={item.id}>
                         <div >
@@ -183,7 +197,28 @@ export const RAM = (props) => {
                             {item.model}
                         </div>
                         <div>
-                            <Button variant="contained" color="secondary" onClick={() => handleAddItem(item)} >Add to cart</Button>
+                            {
+                                cartList.RAM.id === "" ?
+                                    <Button variant="contained" color="secondary" onClick={() => handleAddItem(item)} >Add to cart</Button>
+                                    : <div className={styles.countContainer}>
+                                        <TextField
+                                            sx={{ input: { color: 'whitesmoke' }, label: { color: 'whitesmoke' }, background: { color: 'whitesmoke' } }}
+                                            color={"error"}
+                                            id="outlined-controlled"
+                                            label="Count"
+                                            type={"number"}
+                                            value={count}
+                                            inputProps={{ min: 1 }}
+                                            onChange={(e) => changeHandler(e)}
+
+                                        />
+                                        <Button variant="contained" color="secondary" onClick={() => confirmCount(item)} >Confirm count</Button>
+                                    </div>
+                            }
+
+
+
+
                         </div>
 
                     </div>
@@ -268,7 +303,7 @@ export const CaseComponent = (props) => {
 
     const handleAddItem = (item) => {
         addComponent("Case", item);
-        handleComplete("Case");
+        handleComplete("Checkout");
     }
     return (<div>
         <div className={styles.container}>

@@ -7,8 +7,21 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Drawer from '@mui/material/Drawer';
 import CloseIcon from '@mui/icons-material/Close';
 import styles from './ShopCart.module.css';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 const ShopButton = styled(Button)(({ theme }) => ({
+    color: "whitesmoke",
+    '&:hover': {
+        backgroundColor: "rgb(236, 46, 46)",
+    },
+    fontFamily: ['Montserrat', 'serif'].join(','),
+    fontSize: 20,
+    fontWeight: 400,
+
+}));
+
+const DeleteBtn = styled(IconButton)(({ theme }) => ({
     color: "whitesmoke",
     '&:hover': {
         backgroundColor: "rgb(236, 46, 46)",
@@ -33,11 +46,13 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export const ShopCart = (props) => {
     const { cartList } = props;
-    console.log(cartList);
+
     const [openCart, setOpenCart] = useState(false);
 
     const toggleCart = () => {
         setOpenCart(!openCart);
+        console.table(cartList)
+        console.log(cartList);
     }
 
     const RenderObjet = () => {
@@ -50,12 +65,18 @@ export const ShopCart = (props) => {
                             <img width={"200px"} src={`${process.env.PUBLIC_URL}/assets/${value.model}.png`} alt="" />
                         </div>
                         <div >
-                           {value.model}
+                            {value.model}
                         </div>
+                        {
+                            value.count !== null ?
+                                <div>
+                                    {value.count}
+                                </div> : null
+                        }
 
                     </div>
                 )
-            }else return null;
+            } else return null;
         })
     }
 
@@ -87,13 +108,18 @@ export const ShopCart = (props) => {
                     <IconButton sx={{ color: 'whitesmoke' }} onClick={toggleCart}>
                         <CloseIcon />
                     </IconButton>
-                    <div className={styles.title}>
-                        Shopping Cart
+                    <div className={styles.drawHeaderContainer}>
+                        <div className={styles.title}>
+                            Shopping Cart
+                        </div>
+                        <div >
+                            <DeleteBtn onClick={() => props.emptyCart()} aria-label="delete">
+                                <DeleteIcon />
+                            </DeleteBtn>
+                        </div>
                     </div>
                 </DrawerHeader>
-                <div >
-                    <Button onClick={() => props.emptyCart()}>Empty cart</Button>
-                </div>
+
                 <div className={styles.container}>
                     {
                         RenderObjet()

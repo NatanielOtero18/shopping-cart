@@ -8,6 +8,7 @@ import Navbar from "./components/navbar/Navbar";
 import MainView from './components/mainView/mainView';
 import ShoppingPage from './components/shop/shop';
 import { CaseComponent, CPU, GPU, Mother, PSU, RAM, StorageComp } from './components/Parts/Parts';
+import Checkout from './components/checkout/checkout';
 
 
 const App = () => {
@@ -26,8 +27,15 @@ const App = () => {
         brand: "",
         model: "",
         socket: ""
+      },
+      RAM: {
+
+        id: "",
+        brand: "",
+        model: "",
+        count: ""
       }
-      
+
     }
   );
 
@@ -36,6 +44,8 @@ const App = () => {
       ...prevList,
       [type]: item
     }));
+
+    console.table(cartList)
   }
 
   const removeCoreComponent = (type) => {
@@ -46,7 +56,6 @@ const App = () => {
         id: "",
         brand: "",
         model: "",
-        socket: ""
       }
     }));
   }
@@ -58,7 +67,6 @@ const App = () => {
       CPU: {
         id: "",
         brand: "",
-        family: "",
         model: "",
         socket: ""
       },
@@ -68,6 +76,13 @@ const App = () => {
         brand: "",
         model: "",
         socket: ""
+      },
+      RAM: {
+
+        id: "",
+        brand: "",
+        model: "",
+        count: ""
       }
     });
   }
@@ -81,16 +96,17 @@ const App = () => {
           element={<Navigate to="/" />}
         />
         <Route path="/" element={<MainView />} />
-        <Route path="Shop" element={<ShoppingPage cartList={cartList} removeCoreComponent={removeCoreComponent}/>}>
+        <Route path="Shop" element={<ShoppingPage cartList={cartList} removeCoreComponent={removeCoreComponent} />}>
           <Route path="CPU" element={<CPU cartList={cartList} addComponent={addComponent} />} />
           <Route path="Motherboard" element={<Mother cartList={cartList} addComponent={addComponent} />} />
           <Route path="GPU" element={<GPU cartList={cartList} addComponent={addComponent} />} />
-          <Route path="RAM" element={<RAM  cartList={cartList} addComponent={addComponent} />} />
-          <Route path="PSU" element={<PSU cartList={cartList} addComponent={addComponent}  />} />
+          <Route path="RAM" element={<RAM cartList={cartList} addComponent={addComponent} />} />
+          <Route path="PSU" element={<PSU cartList={cartList} addComponent={addComponent} />} />
           <Route path="Storage" element={<StorageComp cartList={cartList} addComponent={addComponent} />} />
-          <Route path="Case" element={<CaseComponent cartList={cartList} addComponent={addComponent} />} />
+          <Route path="Case" element={<CaseComponent cartList={cartList} addComponent={addComponent} />} />   
+          <Route path="Checkout" element={<Checkout  cartList={cartList}/>} />       
         </Route>
-
+        
       </Routes>
     </BrowserRouter>
   </div>);
