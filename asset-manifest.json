@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/shopping-cart/static/css/main.2cd5ba7d.css",
+    "main.js": "/shopping-cart/static/js/main.eb832741.js",
+    "static/media/Montserrat-VariableFont_wght.ttf": "/shopping-cart/static/media/Montserrat-VariableFont_wght.3faa3eef13649db02044.ttf",
+    "static/media/Oswald-VariableFont_wght.ttf": "/shopping-cart/static/media/Oswald-VariableFont_wght.46d7853f0185f6bf0c93.ttf",
+    "index.html": "/shopping-cart/index.html",
+    "main.2cd5ba7d.css.map": "/shopping-cart/static/css/main.2cd5ba7d.css.map",
+    "main.eb832741.js.map": "/shopping-cart/static/js/main.eb832741.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2cd5ba7d.css",
+    "static/js/main.eb832741.js"
+  ]
+}
